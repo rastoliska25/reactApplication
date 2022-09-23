@@ -23,16 +23,24 @@ export default function Employee() {
         e.preventDefault()
         const employee = { name, age }
         console.log(employee)
-        fetch("http://localhost:8080/addEmployee", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(employee)
 
-        }).then(() => {
-            console.log("New Employee added");
-            alert("New Employee added");
-            window.location.reload();
-        })
+        if (name == '') {
+            alert('Name cannot be empty!');
+        } else if (age == '') {
+            alert('Age cannot be empty!');
+        } else {
+
+            fetch("http://localhost:8080/addEmployee", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(employee)
+
+            }).then(() => {
+                console.log("New Employee added");
+                alert("New Employee added");
+                window.location.reload();
+            })
+        }
     }
 
     return (
