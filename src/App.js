@@ -9,7 +9,6 @@ function App() {
     <div className="App">
 
       <Appbar />
-
       <Routes>
         <Route path='/addEmployee' element={<Employee />} />
         <Route path='/employees' element={<Employees />} />

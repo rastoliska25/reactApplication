@@ -79,6 +79,7 @@ export default function Appbar() {
           >
             <MenuIcon />
           </IconButton>
+          {<img src="/assets/logo.png"/>}
           <Typography
             variant="h6"
             noWrap
