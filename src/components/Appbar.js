@@ -7,6 +7,8 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
+import {Button} from '@material-ui/core';
+import { useNavigate } from "react-router-dom";
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -51,6 +53,19 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Appbar() {
+
+  let navigate = useNavigate(); 
+  const employeesOverview = () =>{ 
+    let path = `/employees`; 
+    navigate(path);
+  }
+
+  const addEmployee = () =>{ 
+    let path = `/addEmployee`; 
+    navigate(path);
+  }
+
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -72,6 +87,13 @@ export default function Appbar() {
           >
             Employees
           </Typography>
+
+          <Button variant="contained" color="#d5e1df" onClick={addEmployee}>
+            Add Employee
+          </Button>
+          <Button variant="contained" color="#d5e1df" onClick={employeesOverview}>
+            Employees overview
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>

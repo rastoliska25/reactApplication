@@ -11,9 +11,10 @@ function App() {
 
       <Appbar />
 
+
       <Routes>
         <Route path='/addEmployee' element={<Employee />}/>     
-        <Route path='/employees' element={<Employees />}/>    
+        <Route path='/employees' element={<Employees />}/> 
       </Routes>
 
       
