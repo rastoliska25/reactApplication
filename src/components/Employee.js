@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@mui/material/TextField';
 import { Container, Paper, Button } from '@material-ui/core';
@@ -17,7 +17,6 @@ export default function Employee() {
     const paperStyle = { padding: '50px 20px', width: 600, margin: "20px auto" }
     const [name, setName] = useState('')
     const [age, setAge] = useState('')
-    const [employees, setEmployees] = useState([])
     const classes = useStyles();
 
     const handleClick = (e) => {
@@ -30,18 +29,12 @@ export default function Employee() {
             body: JSON.stringify(employee)
 
         }).then(() => {
-            console.log("New Employee added")
+            console.log("New Employee added");
+            alert("New Employee added");
+            window.location.reload();
         })
     }
 
-    useEffect(() => {
-        fetch("http://localhost:8080/employees")
-            .then(res => res.json())
-            .then((result) => {
-                setEmployees(result);
-            }
-            )
-    }, [])
     return (
 
         <Container>
@@ -64,23 +57,6 @@ export default function Employee() {
                 </form>
 
             </Paper>
-            <h1>Employees</h1>
-
-            <Paper elevation={3} style={paperStyle}>
-
-                {employees.map(employee => (
-                    <Paper elevation={6} style={{ margin: "10px", padding: "15px", textAlign: "left" }} key={employee.id}>
-                        Name:{employee.name}<br />
-                        Age:{employee.age}
-
-                    </Paper>
-                ))
-                }
-
-
-            </Paper>
-
-
 
         </Container>
     );
